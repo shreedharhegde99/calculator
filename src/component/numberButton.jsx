@@ -8,7 +8,7 @@ function Button({ values, hidden, left = false,buttonClick }) {
   //  for example only values = [7,8,9]
 	return (
 		<RowBox>
-			{left && hidden}
+		
 			{values.map((value, i) => {
 				return (
 					<div

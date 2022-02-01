@@ -1,73 +1,72 @@
 import React, { useEffect, useState } from "react";
 import Button from "./numberButton";
-import { Body, ColumnBox, Display, HiddenBox } from "./styled";
+import { Body, ColumnBox, Display, HiddenBox,Container } from "./styled";
 
 function Calculator() {
-	const [input, setInput] = useState("0");
+  const[calc,setCalc] = useState('')
+  // const [result, setResult] = useState('')
+  
+  const ops = ['+', '-', '*', '/']
+  
+  const calculate = () => {
+  setCalc(eval(calc).toFixed(4).toString())
+}
 
-  const addToInput = (value) => {
-    // console.log(!isNaN(value),value)
-    if (!isNaN(value)) {
-      // console.log(input,'  ',value)
-      if (input === '0') {
-        console.log('input is 0',input,value)
-            // console.log('input 0',value)
-            setInput(value)
-          }
-      else {
-            console.log(input,'  ', value);
-        
-            setInput(input+value )
-          }
-          
-      }
+
+  const updateCalc = (value) => {
+    if (value === "=" && !(ops.includes(calc.slice(-1)))) {
+					console.log(value);
+					calculate();
+				}
+   
+    if (value === 'AC') {
+      setCalc('')
+      // setResult('')
       
-      
-      else {
-        return  
-      }
     }
 
-  
-
-
-
-  const keyInput = (e) => {
-    // console.log(e)
+    if (
+      ops.includes(value) && calc === '' ||
+      ops.includes(value) && ops.includes(calc.slice(-1))
+    ) {
+       
+      return;
+    }
+    if (!(value === '=') && !(value === 'AC')) {
+      setCalc(calc+value)
+    }
     
-    addToInput(e.key)
   }
 
-  useEffect(() => {
-     window.addEventListener('keyup', keyInput)
-  },[])
-    
 
-		
-// console.log(input)
+console.log(calc)
+  
+
 	return (
 		<>
 			<Body>
-				<Display>{input}</Display>
+				<Container>
+					<Display>{calc || '0' }</Display>
 
-				<ColumnBox>
-					<Button
-						buttonClick={addToInput}
-						values={["AC", "+/-", "%"]}
+					<ColumnBox>
+						{/* <Button
+						buttonClick={updateCalc}
+						values={["AC"]}
 						hidden={<HiddenBox />}
-					/>
+					/> */}
 
-					<Button buttonClick={addToInput} values={['7','8', '9', "/"]} />
-					<Button buttonClick={addToInput} values={['4', '5', '6', "*"]} />
-					<Button buttonClick={addToInput} values={['1', '2', '3', "-"]} />
-					<HiddenBox></HiddenBox>
-					<Button
-						buttonClick={addToInput}
-						values={['0', "=", "+"]}
-						left
-						hidden={<HiddenBox />}
-					/>
-				</ColumnBox>
+						<Button buttonClick={updateCalc} values={["7", "8", "9", "/"]} />
+						<Button buttonClick={updateCalc} values={["4", "5", "6", "*"]} />
+						<Button buttonClick={updateCalc} values={["1", "2", "3", "-"]} />
+						<HiddenBox></HiddenBox>
+						<Button
+							buttonClick={updateCalc}
+							values={["AC", "0", "=", "+"]}
+							left
+							hidden
+						/>
+					</ColumnBox>
+				</Container>
 			</Body>
 		</>
 	);
