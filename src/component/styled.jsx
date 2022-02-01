@@ -8,6 +8,7 @@ const Body = styled.div`
 	// border: solid red 1vw;
 	height: 100vh;
 	box-sizing: border-box;
+  overflow:hidden;
 `;
 
 const Display = styled.div`
@@ -24,6 +25,7 @@ const Display = styled.div`
 	color: white;
 	font-size: 2rem;
 	padding: 0.5rem 1rem;
+  overflow-7:scroll;
 `;
 
 
