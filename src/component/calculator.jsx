@@ -1,15 +1,14 @@
 import React, { useState } from "react";
-import styled from "styled-components";
 import Button from "./numberButton";
 import { Body, ColumnBox, Display, HiddenBox } from "./styled";
 
 
 function Calculator() {
-	const [input, setInput] = useState("");
+	const [input, setInput] = useState('0');
 	return (
 		<>
 			<Body>
-				<Display>0</Display>
+				<Display>{input}</Display>
 
 				<ColumnBox>
 					<Button values={["AC", "+/-", "%"]} hidden={<HiddenBox />} />
