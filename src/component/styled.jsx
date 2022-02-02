@@ -69,9 +69,9 @@ const RowBox = styled.div`
 		align-self: center;
 		justify-content: center;
 		cursor: pointer;
-		transition: ease-in-out 0.4s;
+		transition: linear 0.4s;
 	}
-	& > div::selection {
+	& > div:hover {
 		color: white;
 		font-weight: bold;
 
