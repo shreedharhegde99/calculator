@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, {  useState } from "react";
 import Button from "./numberButton";
 import { Body, ColumnBox, Display, HiddenBox,Container } from "./styled";
 
@@ -26,8 +26,8 @@ function Calculator() {
     }
 
     if (
-      ops.includes(value) && calc === '' ||
-      ops.includes(value) && ops.includes(calc.slice(-1))
+      (ops.includes(value)) && calc === '' ||
+      (ops.includes(value)) && ops.includes(calc.slice(-1))
     ) {
        
       return;
